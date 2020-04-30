@@ -10,7 +10,7 @@ namespace EmetteurCore
         {
              var bus = Bus.Factory.CreateUsingRabbitMq(connectionParam => {
 
-             var host = connectionParam.Host(new Uri("rabbitmq://localhost:15672"), h => { h.Username("guest"); h.Password("guest"); }); 
+             var host = connectionParam.Host(new Uri("rabbitmq://localhost/"), h => { h.Username("guest"); h.Password("guest"); }); 
              });
 
             bus.Start();

@@ -4,13 +4,13 @@ using System;
 
 namespace ReceveurCore
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var bus = Bus.Factory.CreateUsingRabbitMq(connectionParam => {
 
-                var host = connectionParam.Host(new Uri("rabbitmq://localhost:15672"), h => { h.Username("guest"); h.Password("guest"); });
+                var host = connectionParam.Host(new Uri("rabbitmq://localhost/"), h => { h.Username("guest"); h.Password("guest"); });
                 connectionParam.ReceiveEndpoint(host, "new_queue", e=> {
                      e.Consumer<MessageConsumer>();
                 });
